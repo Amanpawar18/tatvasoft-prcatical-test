@@ -9,8 +9,16 @@ class EventController extends Controller
 {
     public function index()
     {
-        $events = Event::simplePaginate(10);
+        $events = Event::simplePaginate(5);
         return view('event.index', compact('events'));
+    }
+
+    public function ajaxData()
+    {
+        $events = Event::simplePaginate(5);
+        $html = view('event.index-data', compact('events'))->render();
+        $nextPageUrl = $events->nextPageUrl();
+        return ['html' => $html, 'nextPageUrl' => $nextPageUrl];
     }
 
     public function create()

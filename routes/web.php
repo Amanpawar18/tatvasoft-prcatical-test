@@ -14,7 +14,8 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::resource('event', EventController::class);;
+Route::resource('event', EventController::class);
+Route::get('event-ajax', [EventController::class, 'ajaxData'])->name('event.ajaxData');
 
 Route::get('/', function () {
     return view('welcome');
