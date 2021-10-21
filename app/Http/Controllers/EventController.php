@@ -30,8 +30,8 @@ class EventController extends Controller
     {
         request()->validate([
             'title' => 'string|required',
-            'start_date' => 'required',
-            'end_date' => 'required',
+            'start_date' => 'required|date|before:' . date(request()->end_date),
+            'end_date' => 'required|date|after:' . date(request()->start_date),
             'recurrence_period' => 'required',
             'recurrence_day' => 'required',
             'recurrence_month_duration' => 'required',
@@ -54,8 +54,8 @@ class EventController extends Controller
     {
         request()->validate([
             'title' => 'string|required',
-            'start_date' => 'required',
-            'end_date' => 'required',
+            'start_date' => 'required|date|before:' . date(request()->end_date),
+            'end_date' => 'required|date|after:' . date(request()->start_date),
             'recurrence_period' => 'required',
             'recurrence_day' => 'required',
             'recurrence_month_duration' => 'required',
