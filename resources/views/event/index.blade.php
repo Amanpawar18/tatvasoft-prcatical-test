@@ -46,7 +46,7 @@
                             <tbody>
                                 @forelse ($events as $key => $event)
                                 <tr>
-                                    <td>{{ ++$key }}</td>
+                                    <td>{{ (($events->currentPage() - 1) * 10)   + (++$key) }}</td>
                                     <td>{{ $event->title }}</td>
                                     <td>{{ $event->start_date }}</td>
                                     <td>{{ $event->end_date }}</td>
